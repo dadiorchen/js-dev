@@ -26,9 +26,24 @@ export NVM_DIR="$HOME/.nvm"
 nvm
 nvm install 12.16.3
 node -v
+#init.vim
+cd ~
+rm -rf dadiortemp
+git clone git@github.com:dadiorchen/dadiortemp.git
+cd dadiortemp
+cd openfile/
+npm i
+cd ..
+mkdir -p ~/.config/nvim/
+rm -rf ~/.config/nvim/init.vim
+ln -s ~/dadiortemp/init.vim ~/.config/nvim/init.vim
+
+#plugin
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+set +e
 nvim --headless +PlugInstall +qa
+set -e
 
 cat >> ~/.bashrc <<EOF
 alias nn="node ~/dadiortemp/openfile/nn.js"
