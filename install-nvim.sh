@@ -52,4 +52,9 @@ alias nn="node ~/dadiortemp/openfile/nn.js"
 alias nv="nvim --listen /tmp/nvim"
 EOF
 
+#coc
+rm -rf ~/.config/nvim/coc-settings.json
+ln -s ~/dadiortemp/coc-settings.json ~/.config/nvim/coc-settings.json
+
+
 echo "done!"
