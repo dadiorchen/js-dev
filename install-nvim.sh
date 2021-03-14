@@ -2,13 +2,15 @@
 set -e
 apt update
 apt install -y git sudo
+git config --global user.email "dadiorchen@outlook.com"
+git config --global user.name "dadiorchen"
 mkdir -p ~/work/
 cd ~/work/
 rm -rf neovim
 git clone git@github.com:neovim/neovim.git
 cd neovim
 git fetch --all --tags
-git checkout tags/stable
+git checkout tags/v0.4.3
 git status
 rm -rf build/
 sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
@@ -41,11 +43,13 @@ ln -s ~/dadiortemp/init.vim ~/.config/nvim/init.vim
 #plugin
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-set +e
-nvim --headless +PlugInstall +qa
-set -e
+#set +e
+#nvim --headless +PlugInstall +qa
+#set -e
 
 cat >> ~/.bashrc <<EOF
 alias nn="node ~/dadiortemp/openfile/nn.js"
 alias nv="nvim --listen /tmp/nvim"
 EOF
+
+echo "done!"
