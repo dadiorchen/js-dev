@@ -56,4 +56,8 @@ alias nv="nvim --listen /tmp/nvim"\n'\
 RUN rm -rf ~/.config/nvim/coc-settings.json
 RUN ln -s ~/dadiortemp/coc-settings.json ~/.config/nvim/coc-settings.json
 
+#rg
+RUN curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb && \
+  dpkg -i ripgrep_12.1.1_amd64.deb
+
 RUN echo "done!"
